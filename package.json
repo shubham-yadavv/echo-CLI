@@ -1,7 +1,7 @@
 {
   "name": "echo-cli",
   "version": "1.0.0",
-  "description": "Customer management CLI",
+  "description": "User management CLI",
   "main": "index.js",
   "preferGlobal": true,
   "bin": "./command.js",

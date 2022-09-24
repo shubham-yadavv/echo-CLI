@@ -4,65 +4,65 @@ mongoose.Promise = global.Promise;
 
 
 
-// Connect to db
-const db = mongoose.connect('mongodb://localhost:27017/customercli')
+
+const db = mongoose.connect('mongodb://localhost:27017/usercli')
 
 
-const Customer = require('./models/customer');
+const User = require('./models/user');
 
 
-const addCustomer = (customer) => {
-  Customer.create(customer).then(customer => {
-    console.info('New Customer Added');
+const addUser = (user) => {
+  User.create(user).then(user => {
+    console.info('New User Added');
 
   });
 }
 
-// Find Customer
-const findCustomer = (name) => {
-  // Make case insensitive
+
+const findUser = (name) => {
+
   const search = new RegExp(name, 'i');
-  Customer.find({$or: [{firstname: search}, {lastname: search}]})
-    .then(customer => {
-      console.info(customer);
-      console.info(`${customer.length} matches`);
+  User.find({$or: [{firstname: search}, {lastname: search}]})
+    .then(User => {
+      console.info(User);
+      console.info(`${User.length} matches`);
         
     });
 }
 
-// Update Customer
-const updateCustomer = (_id, customer) => {
-  Customer.update({ _id }, customer)
-    .then(customer => {
-      console.info('Customer Updated');
+
+const updateUser = (_id, User) => {
+  User.update({ _id }, User)
+    .then(User => {
+      console.info('User Updated');
 
     });
 }
 
-// Remove Customer
-const removeCustomer = (_id) => {
-  Customer.remove({ _id })
-    .then(customer => {
-      console.info('Customer Removed');
+
+const removeUser = (_id) => {
+  User.remove({ _id })
+    .then(User => {
+      console.info('User Removed');
 
     });
 }
 
-// List Customers
-const listCustomers = () => {
-  Customer.find()
-    .then(customers => {
-      console.info(customers);
-      console.info(`${customers.length} customers`);
-        db.console("list")
+// List Users
+const listUsers = () => {
+  User.find()
+    .then(users => {
+      console.info(users);
+      console.info(`${users.length} users`);
+
     });
 }
 
-// Export All Methods
+
 module.exports = {
-  addCustomer,
-  findCustomer,
-  updateCustomer,
-  removeCustomer,
-  listCustomers
+  addUser,
+  findUser,
+  updateUser,
+  removeUser,
+  listUsers
 }
