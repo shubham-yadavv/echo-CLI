@@ -34,7 +34,7 @@ const removeUser = (_id) => {
   });
 };
 
-// List Users
+
 const listUsers = () => {
   User.find().then((users) => {
     console.info(users);
